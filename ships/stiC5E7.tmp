@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://g7y32e2pvttm"]
+
+[ext_resource type="Script" path="res://ships/stinger.gd" id="1_jqyvk"]
+[ext_resource type="Texture2D" uid="uid://cfr3xorm1e36f" path="res://ships/sprites/stinger.png" id="1_styhc"]
+[ext_resource type="Shader" path="res://ships/outline.gdshader" id="2_3rm63"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4dya"]
+shader = ExtResource("2_3rm63")
+shader_parameter/thickness = null
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.01
+shader_parameter/outline_color = Color(0.31982, 0.527251, 1, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = null
+shader_parameter/max_or_add = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ngd0"]
+size = Vector2(28, 44)
+
+[node name="Stinger" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_jqyvk")
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_d4dya")
+texture = ExtResource("1_styhc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2ngd0")

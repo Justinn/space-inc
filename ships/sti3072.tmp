@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://g7y32e2pvttm"]
+
+[ext_resource type="Script" path="res://ships/stinger.gd" id="1_jqyvk"]
+[ext_resource type="Texture2D" uid="uid://cfr3xorm1e36f" path="res://ships/sprites/stinger.png" id="1_styhc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ngd0"]
+size = Vector2(28, 44)
+
+[node name="Stinger" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_jqyvk")
+selected = null
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_styhc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2ngd0")

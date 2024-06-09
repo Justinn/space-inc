@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://ddc3jtfqk4rjm"]
+
+[ext_resource type="Script" path="res://ships/mining_drone.gd" id="1_2ai6s"]
+[ext_resource type="Texture2D" uid="uid://b0j46quuh0mfi" path="res://ships/sprites/Fighter 2.png" id="1_mvy8h"]
+[ext_resource type="Shader" path="res://ships/outline.gdshader" id="2_c05tv"]
+[ext_resource type="Texture2D" uid="uid://c05fs3duer1kv" path="res://ships/sprites/muzzle_04.png" id="2_npvl7"]
+
+[sub_resource type="Gradient" id="Gradient_8k3e6"]
+offsets = PackedFloat32Array(0.42623, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.999358, 0.342112, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k355a"]
+gradient = SubResource("Gradient_8k3e6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wgywb"]
+gravity = Vector3(0, 10, 0)
+scale_min = 0.05
+scale_max = 0.05
+color_ramp = SubResource("GradientTexture1D_k355a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ii1d5"]
+shader = ExtResource("2_c05tv")
+shader_parameter/thickness = null
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = null
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = null
+shader_parameter/max_or_add = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndpu1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd6vg"]
+
+[node name="MiningDrone" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_2ai6s")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 16)
+rotation = 3.14159
+scale = Vector2(0.981392, 1.55957)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_wgywb")
+texture = ExtResource("2_npvl7")
+lifetime = 0.3
+explosiveness = 0.01
+randomness = 0.02
+fixed_fps = 60
+interp_to_end = 0.05
+collision_base_size = 0.0
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ii1d5")
+texture = ExtResource("1_mvy8h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ndpu1")
+shape = SubResource("RectangleShape2D_jd6vg")
