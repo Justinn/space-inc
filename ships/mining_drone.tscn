@@ -14,8 +14,8 @@ gradient = SubResource("Gradient_8k3e6")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wgywb"]
 gravity = Vector3(0, 10, 0)
-scale_min = 0.05
-scale_max = 0.05
+scale_min = 0.02
+scale_max = 0.02
 color_ramp = SubResource("GradientTexture1D_k355a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ii1d5"]
@@ -38,8 +38,8 @@ shader_parameter/max_or_add = false
 collision_mask = 2
 script = ExtResource("1_2ai6s")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(0, 16)
+[node name="ExhaustLeft" type="GPUParticles2D" parent="."]
+position = Vector2(-2.5, 10)
 rotation = 3.14159
 scale = Vector2(0.981392, 1.55957)
 amount = 15
@@ -60,3 +60,17 @@ texture = ExtResource("1_mvy8h")
 visible = false
 material = SubResource("ShaderMaterial_ndpu1")
 shape = SubResource("RectangleShape2D_jd6vg")
+
+[node name="ExhaustRight" type="GPUParticles2D" parent="."]
+position = Vector2(2.5, 10)
+rotation = 3.14159
+scale = Vector2(0.96313, 2.43226)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_wgywb")
+texture = ExtResource("2_npvl7")
+lifetime = 0.3
+explosiveness = 0.01
+randomness = 0.02
+fixed_fps = 60
+interp_to_end = 0.05
+collision_base_size = 0.0
