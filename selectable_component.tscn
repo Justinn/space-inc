@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vaierui5ugrs"]
+
+[ext_resource type="Script" path="res://ships/SelectableComponent.gd" id="1_tvwut"]
+
+[node name="SelectableComponent" type="Node"]
+script = ExtResource("1_tvwut")

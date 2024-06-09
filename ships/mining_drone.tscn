@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddc3jtfqk4rjm"]
+[gd_scene load_steps=13 format=3 uid="uid://ddc3jtfqk4rjm"]
 
 [ext_resource type="Script" path="res://ships/mining_drone.gd" id="1_2ai6s"]
 [ext_resource type="Texture2D" uid="uid://b0j46quuh0mfi" path="res://ships/sprites/Fighter 2.png" id="1_mvy8h"]
 [ext_resource type="Shader" path="res://ships/outline.gdshader" id="2_c05tv"]
 [ext_resource type="Texture2D" uid="uid://c05fs3duer1kv" path="res://ships/sprites/muzzle_04.png" id="2_npvl7"]
+[ext_resource type="PackedScene" uid="uid://cnjbmo8brws60" path="res://movement_component.tscn" id="5_en31o"]
+[ext_resource type="PackedScene" uid="uid://vaierui5ugrs" path="res://selectable_component.tscn" id="6_2skk0"]
 
 [sub_resource type="Gradient" id="Gradient_8k3e6"]
 offsets = PackedFloat32Array(0.42623, 1)
@@ -56,11 +58,6 @@ collision_base_size = 0.0
 material = SubResource("ShaderMaterial_ii1d5")
 texture = ExtResource("1_mvy8h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_ndpu1")
-shape = SubResource("RectangleShape2D_jd6vg")
-
 [node name="ExhaustRight" type="GPUParticles2D" parent="."]
 position = Vector2(2.5, 10)
 rotation = 3.14159
@@ -74,3 +71,12 @@ randomness = 0.02
 fixed_fps = 60
 interp_to_end = 0.05
 collision_base_size = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ndpu1")
+shape = SubResource("RectangleShape2D_jd6vg")
+
+[node name="MovementComponent" parent="." instance=ExtResource("5_en31o")]
+
+[node name="SelectableComponent" parent="." instance=ExtResource("6_2skk0")]

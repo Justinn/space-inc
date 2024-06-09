@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjejudypc36l4"]
+[gd_scene load_steps=6 format=3 uid="uid://bjejudypc36l4"]
 
 [ext_resource type="Texture2D" uid="uid://b118a6bl5ogia" path="res://backgrounds/background1.jpg" id="1_6n6ku"]
 [ext_resource type="PackedScene" uid="uid://g7y32e2pvttm" path="res://ships/stinger.tscn" id="3_3tkxm"]
 [ext_resource type="Script" path="res://selector.gd" id="3_ndo8s"]
 [ext_resource type="PackedScene" uid="uid://ddc3jtfqk4rjm" path="res://ships/mining_drone.tscn" id="4_hkw4l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bshet"]
+bg_color = Color(0, 0.529412, 1, 0.364706)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 
 [node name="Main" type="Node"]
 
@@ -11,27 +19,63 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1055.0
-offset_top = -884.0
-offset_right = -159.0
-offset_bottom = 516.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_6n6ku")
 stretch_mode = 6
 
 [node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [node name="Units" type="Node" parent="."]
 
 [node name="Stinger" parent="Units" instance=ExtResource("3_3tkxm")]
-position = Vector2(1, 80)
+position = Vector2(651, 348)
 
 [node name="Stinger2" parent="Units" instance=ExtResource("3_3tkxm")]
-position = Vector2(38, 1)
+position = Vector2(688, 269)
 
 [node name="MiningDrone" parent="Units" instance=ExtResource("4_hkw4l")]
-position = Vector2(-264, 146)
+position = Vector2(386, 414)
 
 [node name="Selector" type="Node2D" parent="."]
 script = ExtResource("3_ndo8s")
+
+[node name="UI" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="SelectionInfo" type="Panel" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -352.0
+offset_top = -148.0
+offset_right = -52.0
+offset_bottom = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bshet")
+
+[node name="SelectedUnitsLbl" type="RichTextLabel" parent="UI/SelectionInfo"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
+text = "Selected [] Units"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MovingUnitsLbl" type="RichTextLabel" parent="UI/SelectionInfo"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 125.0
+offset_bottom = 72.0
+text = "Moving [] Units"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

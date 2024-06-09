@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://g7y32e2pvttm"]
+[gd_scene load_steps=12 format=3 uid="uid://g7y32e2pvttm"]
 
 [ext_resource type="Script" path="res://ships/stinger.gd" id="1_jqyvk"]
 [ext_resource type="Texture2D" uid="uid://cfr3xorm1e36f" path="res://ships/sprites/stinger.png" id="1_styhc"]
 [ext_resource type="Shader" path="res://ships/outline.gdshader" id="2_3rm63"]
 [ext_resource type="Texture2D" uid="uid://c05fs3duer1kv" path="res://ships/sprites/muzzle_04.png" id="4_lils1"]
+[ext_resource type="PackedScene" uid="uid://cnjbmo8brws60" path="res://movement_component.tscn" id="5_x3u46"]
+[ext_resource type="PackedScene" uid="uid://vaierui5ugrs" path="res://selectable_component.tscn" id="6_g547h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rdcal"]
 shader = ExtResource("2_3rm63")
@@ -57,3 +59,7 @@ randomness = 0.02
 fixed_fps = 60
 interp_to_end = 0.05
 collision_base_size = 0.0
+
+[node name="MovementComponent" parent="." instance=ExtResource("5_x3u46")]
+
+[node name="SelectableComponent" parent="." instance=ExtResource("6_g547h")]
